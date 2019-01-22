@@ -110,7 +110,7 @@ def get_counter(conn: sqlite3.Connection, counter_id: int):
     cursor = conn.cursor()
     cursor.execute(QUERY_COUNTER_SQL, (counter_id,))
     result = cursor.fetchone()
-    if result is None:
+    if result is None or result[1] is None:
         return 0
     return result[1]
 
